@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Raphael Nwakaji — Programmer, Graphics Designer, and Forex Trader. Portfolio, blog, and contact." />
+  <title>Raphael Nwakaji | Programmer · Graphics Designer · Forex Trader</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #111936;
+      --card: #151f3f;
+      --card-2: #1a2650;
+      --text: #e8ecf7;
+      --muted: #9aa6c7;
+      --line: rgba(255, 255, 255, 0.08);
+      --brand: #7c5cff;
+      --brand-2: #22d3ee;
+      --accent: #f59e0b;
+      --radius: 18px;
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(900px 500px at 10% -10%, rgba(124, 92, 255, 0.22), transparent 60%),
+        radial-gradient(800px 500px at 90% 0%, rgba(34, 211, 238, 0.16), transparent 55%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(1120px, 92%);
+      margin-inline: auto;
+    }
+
+    /* ---------- Nav ---------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(11, 16, 32, 0.72);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      gap: 18px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: white;
+      font-size: 0.95rem;
+      box-shadow: 0 10px 25px rgba(124, 92, 255, 0.35);
+    }
+
+    nav ul {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover { color: var(--text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: white;
+      box-shadow: 0 12px 30px rgba(124, 92, 255, 0.3);
+    }
+
+    .btn-ghost {
+      border-color: var(--line);
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      padding: 92px 0 74px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 46px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.03);
+      margin-bottom: 20px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #34d399;
+      box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.12);
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 6vw, 4.3rem);
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 18px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #ffffff 10%, #b9a7ff 55%, #67e8f9 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 58ch;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 34px;
+    }
+
+    .roles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .role {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 8px 14px;
+      border-radius: 999px;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .avatar {
+      width: 92px;
+      height: 92px;
+      border-radius: 24px;
+      display: grid;
+      place-items: center;
+      font-size: 1.9rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: white;
+      margin-bottom: 18px;
+      box-shadow: 0 16px 35px rgba(124, 92, 255, 0.35);
+    }
+
+    .hero-card h2 {
+      font-size: 1.2rem;
+      margin-bottom: 4px;
+    }
+
+    .hero-card .handle {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .stat {
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.05rem;
+      margin-bottom: 2px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    /* ---------- Sections ---------- */
+    section { padding: 72px 0; }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 34px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.7rem, 3vw, 2.3rem);
+      letter-spacing: -1px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      max-width: 52ch;
+      font-size: 0.98rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+
+    .panel h3 {
+      font-size: 1.05rem;
+      margin-bottom: 12px;
+    }
+
+    .panel p { color: var(--muted); font-size: 0.96rem; }
+
+    .check-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .check-list li {
+      display: flex;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .check-list li::before {
+      content: "✓";
+      color: #34d399;
+      font-weight: 800;
+    }
+
+    /* ---------- Skills ---------- */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .skill-card {
+      background: linear-gradient(180deg, var(--card), var(--card-2));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(124, 92, 255, 0.45);
+    }
+
+    .skill-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -40% -60% auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124, 92, 255, 0.22), transparent 70%);
+      pointer-events: none;
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      font-size: 1.35rem;
+      margin-bottom: 18px;
+      background: rgba(124, 92, 255, 0.14);
+      border: 1px solid rgba(124, 92, 255, 0.22);
+    }
+
+    .skill-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+    .skill-card p { color: var(--muted); font-size: 0.92rem; }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: #cfd7f7;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.035);
+      padding: 6px 10px;
+      border-radius: 999px;
+    }
+
+    /* ---------- Blog ---------- */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .post {
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+
+    .post:hover {
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .pill {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(34, 211, 238, 0.12);
+      color: #a5f3fc;
+      border: 1px solid rgba(34, 211, 238, 0.2);
+    }
+
+    .post h3 {
+      font-size: 1.08rem;
+      line-height: 1.35;
+    }
+
+    .post p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      flex: 1;
+    }
+
+    .read-more {
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: #c4b5fd;
+    }
+
+    /* ---------- Contact ---------- */
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .contact-card {
+      background: linear-gradient(135deg, rgba(124, 92, 255, 0.18), rgba(34, 211, 238, 0.08));
+      border: 1px solid rgba(124, 92, 255, 0.25);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-card h3 {
+      font-size: 1.5rem;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+
+    .contact-card p { color: var(--muted); margin-bottom: 22px; }
+
+    .contact-lines {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-line {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.16);
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+    }
+
+    label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #cfd7f7;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 13px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      font: inherit;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: rgba(124, 92, 255, 0.7);
+      box-shadow: 0 0 0 4px rgba(124, 92, 255, 0.14);
+    }
+
+    textarea { min-height: 130px; resize: vertical; }
+
+    /* ---------- Footer ---------- */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 30px 0 40px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .socials {
+      display: flex;
+      gap: 10px;
+    }
+
+    .socials a {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.03);
+      font-size: 0.85rem;
+      font-weight: 700;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .socials a:hover {
+      background: rgba(124, 92, 255, 0.18);
+      transform: translateY(-2px);
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 980px) {
+      .hero-grid,
+      .about-grid,
+      .contact-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid,
+      .blog-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero { padding-top: 64px; }
+    }
+
+    @media (max-width: 720px) {
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 74px;
+        right: 4%;
+        left: 4%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: #101833;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 12px;
+        box-shadow: var(--shadow);
+      }
+
+      nav ul.open { display: flex; }
+
+      nav ul li a {
+        display: block;
+        padding: 12px 14px;
+        border-radius: 10px;
+      }
+
+      nav ul li a:hover { background: rgba(255, 255, 255, 0.05); }
+
+      .menu-toggle { display: inline-block; }
+
+      .nav .btn-primary { display: none; }
+
+      .skills-grid,
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: start;
+      }
+
+      h1 { letter-spacing: -1.5px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== Header / Navigation ===== -->
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#home" aria-label="Raphael Nwakaji home">
+        <span class="logo-mark">RN</span>
+        <span>Raphael Nwakaji</span>
+      </a>
+
+      <nav>
+        <ul id="navMenu">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">What I Do</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a class="btn btn-ghost" href="#contact">Hire Me</a></li>
+        </ul>
+      </nav>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> Available for freelance & collaborations</span>
+          <h1>Hi, I’m <span class="gradient-text">Raphael Nwakaji</span></h1>
+          <p>
+            A multi-skilled creator working at the intersection of code, design, and markets.
+            I build clean web experiences, craft bold visual identities, and trade the forex market
+            with a disciplined, data-driven approach.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Let’s Work Together</a>
+            <a class="btn btn-ghost" href="#blog">Read My Blog</a>
+          </div>
+
+          <div class="roles" aria-label="Roles">
+            <span class="role">💻 Programmer</span>
+            <span class="role">🎨 Graphics Designer</span>
+            <span class="role">📈 Forex Trader</span>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Profile summary">
+          <div class="avatar">RN</div>
+          <h2>Raphael Nwakaji</h2>
+          <p class="handle">@raphaelnwakaji · Builder & Trader</p>
+
+          <div class="stat-grid">
+            <div class="stat">
+              <strong>5+</strong>
+              <span>Years coding</span>
+            </div>
+            <div class="stat">
+              <strong>50+</strong>
+              <span>Design projects</span>
+            </div>
+            <div class="stat">
+              <strong>3+</strong>
+              <span>Years trading</span>
+            </div>
+            <div class="stat">
+              <strong>∞</strong>
+              <span>Curiosity</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===== About ===== -->
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <h2>About Me</h2>
+          <p>Three disciplines, one mindset: build with precision, design with purpose, and trade with discipline.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="panel">
+            <h3>Who I am</h3>
+            <p>
+              I’m Raphael Nwakaji — a programmer, graphics designer, and forex trader based in Nigeria.
+              I enjoy turning ideas into working products, creating visuals that communicate clearly,
+              and studying market structure to make informed trading decisions.
+            </p>
+            <p style="margin-top: 12px;">
+              Whether I’m writing code, designing a brand, or analyzing charts, I focus on clarity,
+              consistency, and long-term growth.
+            </p>
+          </div>
+
+          <div class="panel">
+            <h3>How I work</h3>
+            <ul class="check-list">
+              <li>Clean, responsive, and accessible web development.</li>
+              <li>Brand-focused graphics design with strong visual hierarchy.</li>
+              <li>Risk-managed forex trading with technical and fundamental analysis.</li>
+              <li>Clear communication, timely delivery, and continuous improvement.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Skills / Services ===== -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-head">
+          <h2>What I Do</h2>
+          <p>A blend of technical, creative, and financial skills that help me solve problems from multiple angles.</p>
+        </div>
+
+        <div class="skills-grid">
+          <article class="skill-card">
+            <div class="icon">💻</div>
+            <h3>Programming</h3>
+            <p>Building fast, responsive websites and web apps with modern tools and clean code.</p>
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <div class="icon">🎨</div>
+            <h3>Graphics Design</h3>
+            <p>Creating visual identities, social media graphics, flyers, and UI designs that stand out.</p>
+            <div class="tags">
+              <span class="tag">Photoshop</span>
+              <span class="tag">Illustrator</span>
+              <span class="tag">Figma</span>
+              <span class="tag">Branding</span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <div class="icon">📈</div>
+            <h3>Forex Trading</h3>
+            <p>Analyzing currency markets with technical and fundamental strategies while managing risk.</p>
+            <div class="tags">
+              <span class="tag">Technical Analysis</span>
+              <span class="tag">Risk Management</span>
+              <span class="tag">Price Action</span>
+              <span class="tag">Market Structure</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Blog ===== -->
+    <section id="blog">
+      <div class="container">
+        <div class="section-head">
+          <h2>Latest From the Blog</h2>
+          <p>Notes on coding, design, trading psychology, and the lessons I pick up along the way.</p>
+        </div>
+
+        <div class="blog-grid">
+          <article class="post">
+            <div class="post-meta">
+              <span class="pill">Programming</span>
+              <span>Jun 12, 2025</span>
+            </div>
+            <h3>How I Structure My Frontend Projects for Speed and Clarity</h3>
+            <p>A practical look at folder structure, reusable components, and keeping CSS maintainable as projects grow.</p>
+            <a class="read-more" href="#contact">Read more →</a>
+          </article>
+
+          <article class="post">
+            <div class="post-meta">
+              <span class="pill">Design</span>
+              <span>May 28, 2025</span>
+            </div>
+            <h3>Designing for Trust: Visual Principles That Convert</h3>
+            <p>Why spacing, contrast, and consistency matter more than decoration — and how to apply them quickly.</p>
+            <a class="read-more" href="#contact">Read more →</a>
+          </article>
+
+          <article class="post">
+            <div class="post-meta">
+              <span class="pill">Forex</span>
+              <span>May 09, 2025</span>
+            </div>
+            <h3>Risk First, Profit Second: My Forex Trading Checklist</h3>
+            <p>The simple pre-trade routine I use to protect capital, avoid overtrading, and stay consistent.</p>
+            <a class="read-more" href="#contact">Read more →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <h2>Let’s Build Something</h2>
+          <p>Have a project, a design idea, or want to talk markets? Send me a message and I’ll get back to you.</p>
+        </div>
+
+        <div class="contact-wrap">
+          <div class="contact-card">
+            <h3>Get in touch</h3>
+            <p>I’m open to freelance projects, collaborations, and interesting conversations.</p>
+
+            <div class="contact-lines">
+              <div class="contact-line">📧 <span>hello@raphaelnwakaji.com</span></div>
+              <div class="contact-line">📍 <span>Nigeria · Available worldwide</span></div>
+              <div class="contact-line">💼 <span>Open to freelance & remote roles</span></div>
+            </div>
+          </div>
+
+          <form action="#" method="post">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" required />
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell me about your project or idea..." required></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Raphael Nwakaji. All rights reserved.</p>
+      <div class="socials" aria-label="Social links">
+        <a href="#" aria-label="GitHub">GH</a>
+        <a href="#" aria-label="LinkedIn">LI</a>
+        <a href="#" aria-label="Twitter / X">X</a>
+        <a href="#" aria-label="Instagram">IG</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile navigation toggle
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navMenu.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    // Close mobile menu when a link is clicked
+    navMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
